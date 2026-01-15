@@ -4,8 +4,8 @@ https://puzzle.julien-marcou.fr/
 
 ## Requirements
 
-- Node.js `v20`
-- Angular CLI `v18`
+- Node.js `v24`
+- Angular CLI `v21`
 
 ### Setup
 - Create the `back/.env` file based on the `back/.env.template`
