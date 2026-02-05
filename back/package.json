@@ -5,8 +5,8 @@
     "build": "npm run clean && npm run assets && esbuild src/index.ts --bundle --minify --platform=node --outfile=dist/pixi-puzzle/index.js",
     "serve": "npm run clean && npm run assets && tsc-watch --onSuccess \"node ./dist/pixi-puzzle/index.js\" --noClear",
     "lint": "eslint \"**/*.ts\"",
-    "clean": "rimraf dist/pixi-puzzle",
-    "assets": "cpy .env dist/pixi-puzzle"
+    "clean": "rimraf dist/pixi-puzzle/",
+    "assets": "cpy .env dist/pixi-puzzle/"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "@eslint/json": "^0.14.0",
     "@stylistic/eslint-plugin": "^5.7.0",
     "@types/node": "^24.10.8",
-    "cpy-cli": "^6.0.0",
+    "cpy-cli": "^7.0.0",
     "esbuild": "^0.27.2",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.4.4",
