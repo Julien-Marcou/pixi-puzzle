@@ -29,10 +29,12 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/mcp.json
 .history/*
 
-# Test coverage
-coverage
+# Miscellaneous
+/coverage
+__screenshots__/
 
 # System files
 .DS_Store
