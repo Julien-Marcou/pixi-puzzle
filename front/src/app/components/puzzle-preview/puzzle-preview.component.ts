@@ -2,7 +2,7 @@ import type { Point } from '../../models/geometry';
 import type { PuzzleSizeParameters } from '../../models/puzzle-parameters';
 import type { ElementRef } from '@angular/core';
 
-import { ChangeDetectionStrategy, Component, computed, effect, input, viewChild } from '@angular/core';
+import { Component, computed, effect, input, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Axis, VALID_AXES } from '../../models/geometry';
@@ -14,7 +14,6 @@ import { Canvas } from '../../utils/canvas';
   templateUrl: './puzzle-preview.component.html',
   styleUrl: './puzzle-preview.component.scss',
   imports: [FormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PuzzlePreviewComponent {
 

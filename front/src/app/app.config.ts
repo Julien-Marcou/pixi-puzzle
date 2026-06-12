@@ -1,7 +1,7 @@
 import type { ApplicationConfig } from '@angular/core';
 import type { Routes } from '@angular/router';
 
-import { provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import { provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { PuzzleFormComponent } from './components/puzzle-form/puzzle-form.component';
@@ -29,7 +29,6 @@ const APP_ROUTES: Routes = [
 export const APP_CONFIG: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
     provideRouter(APP_ROUTES, withComponentInputBinding()),
   ],
 };

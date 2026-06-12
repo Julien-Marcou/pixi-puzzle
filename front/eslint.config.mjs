@@ -140,6 +140,13 @@ export default defineConfig(
         },
         {
           selector: 'classProperty',
+          modifiers: ['private'],
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
+          filter: { regex: '^_', match: true },
+        },
+        {
+          selector: 'classProperty',
           modifiers: ['readonly'],
           format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
         },
@@ -208,6 +215,7 @@ export default defineConfig(
           ignoreStatic: true,
         },
       ],
+      '@angular-eslint/no-uncalled-signals': 'error',
       '@angular-eslint/directive-selector': [
         'error',
         {
@@ -230,9 +238,7 @@ export default defineConfig(
     files: ['**/*.html'],
     extends: [
       prettierConfig,
-      // @ts-ignore
       ...angularConfigs.templateRecommended,
-      // @ts-ignore
       ...angularConfigs.templateAccessibility,
     ],
     rules: {

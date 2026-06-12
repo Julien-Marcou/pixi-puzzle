@@ -1,6 +1,6 @@
 import type { PuzzleSizeParameters } from '../../models/puzzle-parameters';
 
-import { ChangeDetectionStrategy, Component, effect, input, model, signal, untracked } from '@angular/core';
+import { Component, effect, input, model, signal, untracked } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AXIS_TO_DIMENSION, VALID_AXES } from '../../models/geometry';
@@ -10,7 +10,6 @@ import { AXIS_TO_DIMENSION, VALID_AXES } from '../../models/geometry';
   templateUrl: './puzzle-size-field.component.html',
   styleUrl: './puzzle-size-field.component.scss',
   imports: [FormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PuzzleSizeFieldComponent {
 

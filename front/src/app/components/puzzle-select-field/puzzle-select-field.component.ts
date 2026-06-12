@@ -1,7 +1,7 @@
 import type { AbortablePromise } from '../../models/abortable-promise';
 import type { ElementRef, OnInit } from '@angular/core';
 
-import { ChangeDetectionStrategy, Component, model, signal, viewChild } from '@angular/core';
+import { Component, model, signal, viewChild } from '@angular/core';
 
 import { ImageTooBigError, ImageTooSmallError, FileReadError, FileFetchError, ImageCreateError } from '../../models/error';
 import { ImageLoader } from '../../utils/image-loader';
@@ -19,7 +19,6 @@ type ImageError = {
   templateUrl: './puzzle-select-field.component.html',
   styleUrl: './puzzle-select-field.component.scss',
   imports: [CheckmarkSpinnerComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PuzzleSelectFieldComponent implements OnInit {
 

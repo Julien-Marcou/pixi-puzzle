@@ -1,6 +1,6 @@
 import type { PuzzleSizeParameters } from '../../models/puzzle-parameters';
 
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,6 @@ import { PuzzleSizeFieldComponent } from '../puzzle-size-field/puzzle-size-field
   templateUrl: './puzzle-form.component.html',
   styleUrl: './puzzle-form.component.scss',
   imports: [FormsModule, PuzzlePreviewComponent, PuzzleSelectFieldComponent, PuzzleSizeFieldComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PuzzleFormComponent {
 

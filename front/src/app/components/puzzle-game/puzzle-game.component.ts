@@ -2,7 +2,7 @@ import type { PuzzleGameParameters } from '../../models/puzzle-parameters';
 import type { ElementRef, OnInit } from '@angular/core';
 
 import { Location } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, input, signal, viewChild } from '@angular/core';
+import { Component, DestroyRef, inject, input, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +14,6 @@ import { PuzzleGame } from '../../models/puzzle-game';
   templateUrl: './puzzle-game.component.html',
   styleUrl: './puzzle-game.component.scss',
   imports: [FormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PuzzleGameComponent implements OnInit {
 
