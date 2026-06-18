@@ -4,7 +4,7 @@ import type { PuzzleGameParameters } from './puzzle-parameters';
 import type { PuzzleSpritesheetTexture } from './puzzle-spritesheet';
 
 import { isDevMode } from '@angular/core';
-import { AbstractRenderer, Application, Container, Graphics } from 'pixi.js';
+import { AbstractRenderer, Application, Container, Graphics, Filter } from 'pixi.js';
 import { Subject } from 'rxjs';
 
 import { PieceShape } from './piece-shape';
@@ -14,6 +14,16 @@ import { FpsGraph } from '../display-objects/fps-graph';
 import { PieceGroup } from '../display-objects/piece-group';
 import { PieceSprite } from '../display-objects/piece-sprite';
 import { PuzzleSpritesheetBuilder } from '../utils/puzzle-spritesheet-builder';
+
+import 'pixi.js/app';
+import 'pixi.js/filters';
+import 'pixi.js/text';
+import 'pixi.js/graphics';
+import 'pixi.js/prepare';
+
+AbstractRenderer.defaultOptions.resolution = Math.max(1, window.devicePixelRatio);
+AbstractRenderer.defaultOptions.roundPixels = true;
+Filter.defaultOptions.resolution = 'inherit';
 
 export class PuzzleGame {
 
@@ -153,7 +163,7 @@ export class PuzzleGame {
         autoStart: false,
         resolution: AbstractRenderer.defaultOptions.resolution,
         autoDensity: true,
-        manageImports: false,
+        skipExtensionImports: true,
       });
 
       // Render first frame to avoid black screen during loading

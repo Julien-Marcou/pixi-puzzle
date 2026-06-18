@@ -4,18 +4,16 @@ import type { Routes } from '@angular/router';
 import { provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
-import { PuzzleFormComponent } from './components/puzzle-form/puzzle-form.component';
-import { PuzzleGameComponent } from './components/puzzle-game/puzzle-game.component';
 import { currentPuzzleGameParametersResolver } from './resolvers/current-puzzle-game-parameters.resolver';
 
 const APP_ROUTES: Routes = [
   {
     path: '',
-    component: PuzzleFormComponent,
+    loadComponent: () => import('./components/puzzle-form/puzzle-form.component').then((m) => m.PuzzleFormComponent),
   },
   {
     path: 'play',
-    component: PuzzleGameComponent,
+    loadComponent: () => import('./components/puzzle-game/puzzle-game.component').then((m) => m.PuzzleGameComponent),
     resolve: {
       puzzleGameParameters: currentPuzzleGameParametersResolver,
     },
