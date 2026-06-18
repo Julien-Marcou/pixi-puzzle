@@ -1,7 +1,6 @@
 import type { PuzzleSizeParameters } from '../../models/puzzle-parameters';
 
 import { Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CurrentPuzzleGameService } from '../../services/current-puzzle-parameters.service';
@@ -13,7 +12,7 @@ import { PuzzleSizeFieldComponent } from '../puzzle-size-field/puzzle-size-field
   selector: 'app-puzzle-form',
   templateUrl: './puzzle-form.component.html',
   styleUrl: './puzzle-form.component.scss',
-  imports: [FormsModule, PuzzlePreviewComponent, PuzzleSelectFieldComponent, PuzzleSizeFieldComponent],
+  imports: [PuzzlePreviewComponent, PuzzleSelectFieldComponent, PuzzleSizeFieldComponent],
 })
 export class PuzzleFormComponent {
 

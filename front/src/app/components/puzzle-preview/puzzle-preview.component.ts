@@ -3,7 +3,6 @@ import type { PuzzleSizeParameters } from '../../models/puzzle-parameters';
 import type { ElementRef } from '@angular/core';
 
 import { Component, computed, effect, input, viewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { Axis, VALID_AXES } from '../../models/geometry';
 import { TabbedEdge } from '../../models/tabbed-edge';
@@ -13,7 +12,6 @@ import { Canvas } from '../../utils/canvas';
   selector: 'app-puzzle-preview',
   templateUrl: './puzzle-preview.component.html',
   styleUrl: './puzzle-preview.component.scss',
-  imports: [FormsModule],
 })
 export class PuzzlePreviewComponent {
 

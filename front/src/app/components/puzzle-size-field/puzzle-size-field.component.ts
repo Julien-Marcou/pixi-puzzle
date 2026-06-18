@@ -1,7 +1,7 @@
 import type { PuzzleSizeParameters } from '../../models/puzzle-parameters';
 
 import { Component, effect, input, model, signal, untracked } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { disabled, form, FormField, max, min } from '@angular/forms/signals';
 
 import { AXIS_TO_DIMENSION, VALID_AXES } from '../../models/geometry';
 
@@ -9,7 +9,7 @@ import { AXIS_TO_DIMENSION, VALID_AXES } from '../../models/geometry';
   selector: 'app-puzzle-size-field',
   templateUrl: './puzzle-size-field.component.html',
   styleUrl: './puzzle-size-field.component.scss',
-  imports: [FormsModule],
+  imports: [FormField],
 })
 export class PuzzleSizeFieldComponent {
 
@@ -22,8 +22,12 @@ export class PuzzleSizeFieldComponent {
   public readonly loading = input.required<boolean>();
   public readonly puzzleSizeParameters = model.required<PuzzleSizeParameters | null>();
 
-  protected readonly selectedPieceSizeIndex = signal<number>(0);
   protected readonly validPieceSizes = signal<number[]>([this.minPieceSizeConstraint, this.maxPieceSizeConstraint]);
+  protected readonly selectedPieceSizeIndex = form<number>(signal(0), (field) => {
+    disabled(field, { when: () => this.loading() });
+    min(field, 0);
+    max(field, () => this.validPieceSizes().length - 1);
+  });
 
   private tryRestoringPreviousPieceSize = true;
 
@@ -47,7 +51,7 @@ export class PuzzleSizeFieldComponent {
     effect(() => {
       const puzzleImage = this.puzzleImage();
       const validPieceSizes = this.validPieceSizes();
-      const selectedPieceSizeIndex = this.selectedPieceSizeIndex();
+      const selectedPieceSizeIndex = this.selectedPieceSizeIndex().value();
       const pieceSize = validPieceSizes[selectedPieceSizeIndex];
       if (!puzzleImage || !pieceSize) {
         return;
@@ -97,10 +101,10 @@ export class PuzzleSizeFieldComponent {
     // If the user comes from a previous game, we try to restore what piece size they had chosen
     if (this.tryRestoringPreviousPieceSize) {
       this.tryRestoringPreviousPieceSize = false;
-      this.selectedPieceSizeIndex.set(previousPieceSizeIndex === -1 ? defaultPieceSizeIndex : previousPieceSizeIndex);
+      this.selectedPieceSizeIndex().value.set(previousPieceSizeIndex === -1 ? defaultPieceSizeIndex : previousPieceSizeIndex);
     }
     else {
-      this.selectedPieceSizeIndex.set(defaultPieceSizeIndex);
+      this.selectedPieceSizeIndex().value.set(defaultPieceSizeIndex);
     }
   }
 
